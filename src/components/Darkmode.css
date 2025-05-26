@@ -1,0 +1,99 @@
+:root[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --button-bg: #f0f0f0;
+  --button-hover: #e0e0e0;
+  --app-background: #ffffff;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-text: #333333;
+  --section-bg: #ffffff;
+  --grid-line-color: rgba(4, 102, 200, 0.15);
+  --grid-dot-color: rgba(0, 40, 85, 0.2);
+}
+
+:root[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --button-bg: #2d2d2d;
+  --button-hover: #3d3d3d;
+  --app-background: #121212;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --nav-bg: rgba(18, 18, 18, 0.8);
+  --nav-text: #ffffff;
+  --section-bg: #1a1a1a;
+  --grid-line-color: rgba(255, 255, 255, 0.05);
+  --grid-dot-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Apply theme colors to all elements */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--app-background);
+  color: var(--text-color);
+}
+
+.app-container {
+  background-color: var(--app-background);
+  color: var(--text-color);
+}
+
+/* Update navbar styles */
+.nav-menu {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+}
+
+.nav-menu.scrolled {
+  background: var(--nav-bg);
+}
+
+.nav-menu button {
+  color: var(--nav-text);
+}
+
+/* Update section styles */
+section {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+}
+
+/* Update card styles */
+.project-box, .skill-item {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+/* Theme toggle button styles */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--button-bg);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--button-hover);
+  transform: scale(1.1);
+}
+
+.theme-icon {
+  font-size: 1.2rem;
+  color: var(--text-color);
+} 
