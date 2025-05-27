@@ -1,0 +1,117 @@
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 
+    clamp(20px, 5vw, 40px) clamp(20px, 5vw, 40px);
+  background-position: 
+    calc(50% + var(--grid-offset, 0px)) calc(50% + var(--grid-offset, 0px));
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+  will-change: background-position;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.app-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    var(--grid-dot-color) 1px,
+    transparent 1px
+  );
+  background-size: 
+    clamp(40px, 10vw, 80px) clamp(40px, 10vw, 80px);
+  background-position: 
+    calc(50% + var(--grid-offset, 0px)) calc(50% + var(--grid-offset, 0px));
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 0;
+  will-change: background-position;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Grid movement animation */
+.app-container.grid-moving::before,
+.app-container.grid-moving::after {
+  transition: background-position 0.1s linear;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-container::before {
+    background-size: 
+      clamp(15px, 4vw, 30px) clamp(15px, 4vw, 30px);
+    opacity: 0.4;
+  }
+
+  .app-container::after {
+    background-size: 
+      clamp(30px, 8vw, 60px) clamp(30px, 8vw, 60px);
+    opacity: 0.25;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container::before {
+    background-size: 
+      clamp(12px, 3vw, 25px) clamp(12px, 3vw, 25px);
+    opacity: 0.3;
+  }
+
+  .app-container::after {
+    background-size: 
+      clamp(25px, 6vw, 50px) clamp(25px, 6vw, 50px);
+    opacity: 0.2;
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .app-container::before,
+  .app-container::after {
+    animation: none;
+    transition: none;
+  }
+
+  .app-container.grid-moving::before,
+  .app-container.grid-moving::after {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (forced-colors: active) {
+  .app-container::before,
+  .app-container::after {
+    opacity: 0.1;
+  }
+}
+
+/* Print styles */
+@media print {
+  .app-container::before,
+  .app-container::after {
+    display: none;
+  }
+} 

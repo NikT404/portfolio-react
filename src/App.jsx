@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import AboutMe from './components/AboutMe';
 import Darkmode from './components/Darkmode';
 import GridEffect from './components/GridEffect';
+import "./styles/spacing.css";
 import "./App.css";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <Navbar />
       <Darkmode />
       <GridEffect />
-      <main className="main-content">
+      <main className="main-content section">
         <Pop />
         <AboutMe />
         <Projects />
