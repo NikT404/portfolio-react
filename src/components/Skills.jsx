@@ -17,7 +17,7 @@
 //   );
 // }
 import React from 'react';
-import './Skills.css';
+import './skills.css';
 import ScrollAnimation from './ScrollAnimation';
 
 const skills = [
