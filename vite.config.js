@@ -1,11 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Minimal configuration for Vercel deployment
+// Absolute minimal configuration
 export default defineConfig({
   plugins: [react()],
   build: {
-    target: 'esnext',
-    minify: 'esbuild'
+    // Disable source maps in production
+    sourcemap: false,
+    // Use a simpler chunking strategy
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
   }
 })
