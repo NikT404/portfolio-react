@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollAnimation from './ScrollAnimation';
-import './footer.css';
+import './Footer.css';
 
 const Footer = () => {
   const email = "utkarshsinghrajawat12@gmail.com";
