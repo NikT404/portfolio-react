@@ -1,43 +1,44 @@
 import React from 'react';
 import ScrollAnimation from './ScrollAnimation';
+import './footer.css';  // Make sure this CSS file exists
 
-export default function Footer() {
+const Footer = () => {
   const email = "utkarshsinghrajawat120@gmail.com";
   const phone = "+919351571387";
 
   const handleEmailClick = (e) => {
     e.preventDefault();
-    // Create a direct Gmail compose URL
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`;
-    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+    window.open(`mailto:${email}`, '_blank');
   };
 
   return (
     <ScrollAnimation>
-      <section id="contact" className="contact-section" style={{ marginBottom: '2rem' }}>
-        <h2>Contact Me</h2>
+      <section id="contact" className="contact-section">
+        <h2>Get in Touch</h2>
+        
         <div className="contact-links">
           <a 
             href={`mailto:${email}`}
-            className="contact-link"
-            aria-label="Send email to Utkarsh Singh"
             onClick={handleEmailClick}
+            className="contact-link email"
           >
-            <span className="shine"></span>
+            <i className="icon">📧</i>
             {email}
           </a>
+          
           <a 
             href={`tel:${phone}`}
-            className="contact-link"
-            aria-label="Call Utkarsh Singh"
+            className="contact-link phone"
           >
-            <span className="shine"></span>
+            <i className="icon">📞</i>
             {phone}
           </a>
         </div>
 
-        <p className="footer-text">© 2025 My Portfolio. All rights reserved.</p>
+        <p className="copyright">© 2025 My Portfolio. All rights reserved.</p>
       </section>
     </ScrollAnimation>
   );
-}
+};
+
+export default Footer;
