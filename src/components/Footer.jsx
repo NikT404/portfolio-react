@@ -3,7 +3,7 @@ import ScrollAnimation from './ScrollAnimation';
 import './footer.css';  // Make sure this CSS file exists
 
 const Footer = () => {
-  const email = "utkarshsinghrajawat120@gmail.com";
+  const email = "utkarshsinghrajawat12@gmail.com";
   const phone = "+919351571387";
 
   const handleEmailClick = (e) => {
