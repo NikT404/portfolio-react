@@ -21,17 +21,17 @@ import './skills.css';
 import ScrollAnimation from './ScrollAnimation';
 
 const skills = [
-  { src: 'Images/icons8-html-5.svg', alt: 'HTML', name: 'HTML5' },
-  { src: 'Images/icons8-css-logo.svg', alt: 'CSS', name: 'CSS3' },
-  { src: 'Images/icons8-javascript.svg', alt: 'JavaScript', name: 'JavaScript' },
-  { src: 'Images/icons8-github.svg', alt: 'GitHub', name: 'GitHub' },
-  { src: 'Images/icons8-figma.svg', alt: 'Figma', name: 'Figma' },
-  { src: 'Images/react-svgrepo-com.svg', alt: 'React', name: 'React' },
-  { src: 'Images/icons8-nodejs.svg', alt: 'Node.js', name: 'Node.js' },
-  { src: 'Images/icons8-mysql.svg', alt: 'MySQL', name: 'MySQL' },
-  { src: 'Images/icons8-c.svg', alt: 'C', name: 'C' },
-  { src: 'Images/icons8-c (1).svg', alt: 'C++', name: 'C++' },
-  { src: 'Images/icons8-tailwindcss.svg', alt: 'TailwindCSS', name: 'TailwindCSS' },
+  { src: 'icons8-css-logo.svg', alt: 'CSS', name: 'CSS3' },
+  { src: 'icons8-javascript.svg', alt: 'JavaScript', name: 'JavaScript' },
+  { src: 'icons8-html-5.svg', alt: 'HTML', name: 'HTML5' },
+  { src: 'icons8-github.svg', alt: 'GitHub', name: 'GitHub' },
+  { src: 'icons8-figma.svg', alt: 'Figma', name: 'Figma' },
+  { src: 'react-svgrepo-com.svg', alt: 'React', name: 'React' },
+  { src: 'icons8-nodejs.svg', alt: 'Node.js', name: 'Node.js' },
+  { src: 'icons8-mysql.svg', alt: 'MySQL', name: 'MySQL' },
+  { src: 'icons8-c.svg', alt: 'C', name: 'C' },
+  { src: 'icons8-c (1).svg', alt: 'C++', name: 'C++' },
+  { src: 'icons8-tailwindcss.svg', alt: 'TailwindCSS', name: 'TailwindCSS' },
 ];
 
 export default function Skills() {
