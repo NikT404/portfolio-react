@@ -22,7 +22,7 @@ const Footer = () => {
             onClick={handleEmailClick}
             className="contact-link email"
           >
-            <i className="icon">📧</i>
+            <i className="icon"></i>
             {email}
           </a>
           
@@ -30,7 +30,7 @@ const Footer = () => {
             href={`tel:${phone}`}
             className="contact-link phone"
           >
-            <i className="icon">📞</i>
+            <i className="icon"></i>
             {phone}
           </a>
         </div>
