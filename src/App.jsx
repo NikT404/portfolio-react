@@ -8,6 +8,7 @@ import AboutMe from './components/AboutMe';
 import Darkmode from './components/Darkmode';
 import GridEffect from './components/GridEffect';
 import "./styles/spacing.css";
+import "./styles/common.css";
 import "./App.css";
 
 function App() {

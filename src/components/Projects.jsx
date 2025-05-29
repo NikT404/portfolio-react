@@ -1,6 +1,7 @@
 import React from "react";
 import ScrollAnimation from './ScrollAnimation';
 import './projects.css';
+import '../styles/common.css';
 
 const projects = [
   {
@@ -28,23 +29,25 @@ const projects = [
 const Projects = () => {
   return (
     <ScrollAnimation>
-      <section id="projects" className="projects-section-boxed">
-        <div className="projects-grid-boxed">
-          <h2>My Projects</h2>
-          {projects.map((project, index) => (
-            <div key={index} className="project-box">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                View Project
-              </a>
-            </div>
-          ))}
+      <section id="projects" className="projects-section section">
+        <div className="container">
+          <h2 className="text-center mb-4">My Projects</h2>
+          <div className="projects-grid grid">
+            {projects.map((project, index) => (
+              <div key={index} className="project-box card">
+                <h3 className="project-title mb-2">{project.title}</h3>
+                <p className="project-description mb-3">{project.description}</p>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  View Project
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </ScrollAnimation>
