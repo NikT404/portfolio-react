@@ -1,56 +1,70 @@
 import React from "react";
-import ScrollAnimation from './ScrollAnimation';
 import './projects.css';
-import '../styles/common.css';
 
 const projects = [
   {
-    title: "Portfolio Website",
-    description: "A sleek personal portfolio built with React and Tailwind CSS, showcasing my skills and projects with a modern, responsive design.",
-    link: "https://yourportfolio.com",
+    title: "Project One",
+    description: "A brief description of Project One.",
+    image: "/path/to/project1.jpg",
+    link: "#",
+    github: "#"
   },
   {
-    title: "E-commerce Store",
-    description: "A full-stack e-commerce site using MERN stack, featuring user authentication, product management, and secure payment processing.",
-    link: "https://yourecommerce.com",
+    title: "Project Two",
+    description: "A brief description of Project Two.",
+    image: "/path/to/project2.jpg",
+    link: "#",
+    github: "#"
   },
   {
-    title: "Weather App",
-    description: "Real-time weather updates using OpenWeather API, with location-based forecasting and interactive weather maps.",
-    link: "https://yourweatherapp.com",
+    title: "Project Three",
+    description: "A brief description of Project Three.",
+    image: "/path/to/project3.jpg",
+    link: "#",
+    github: "#"
   },
   {
-    title: "Task Manager",
-    description: "A productivity app built with React and Firebase, featuring real-time updates, user authentication, and task categorization.",
-    link: "https://yourtaskmanager.com",
+    title: "Project Four",
+    description: "A brief description of Project Four.",
+    image: "/path/to/project4.jpg",
+    link: "#",
+    github: "#"
   }
+  // Add more projects here as needed
 ];
 
 const Projects = () => {
+  // Divide projects into two groups if needed, or just map all into one grid container
+  // For simplicity, let's just map all into one grid for now, and we can adjust if you need two distinct blocks
   return (
-    <ScrollAnimation>
-      <section id="projects" className="projects-section section">
-        <div className="container">
-          <h2 className="text-center mb-4">My Projects</h2>
-          <div className="projects-grid grid">
-            {projects.map((project, index) => (
-              <div key={index} className="project-box card">
-                <h3 className="project-title mb-2">{project.title}</h3>
-                <p className="project-description mb-3">{project.description}</p>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                >
-                  View Project
-                </a>
+    <section id="projects" className="projects-section">
+      <h2>My Projects</h2>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <div key={index} className="project-card">
+            <img src={project.image} alt={`${project.title} screenshot`} className="project-image" />
+            <div className="project-info">
+              <h3 className="project-title">{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+              <div className="project-links">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github">
+                    GitHub
+                  </a>
+                )}
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link live">
+                    Live Demo
+                  </a>
+                )}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
-    </ScrollAnimation>
+        ))}
+      </div>
+      {/* If you need a second grid block, you can add another div here */}
+      {/* <div className="projects-grid">{...more projects map...}</div> */}
+    </section>
   );
 };
 

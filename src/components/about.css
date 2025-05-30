@@ -1,11 +1,11 @@
 .about-section {
-  padding: var(--section-padding-y) var(--section-padding-x);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
   background: var(--section-bg);
   position: relative;
   overflow: hidden;
-  margin: var(--section-margin-y) auto;
-  max-width: 1000px;
-  border-radius: 2rem;
+  margin: clamp(2rem, 5vw, 4rem) auto;
+  width: min(95%, 1000px);
+  border-radius: clamp(1rem, 3vw, 2rem);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-color);
 }
@@ -14,23 +14,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--component-gap);
-  max-width: 800px;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  width: min(95%, 800px);
   margin: 0 auto;
-  padding: var(--component-padding);
+  padding: clamp(1rem, 3vw, 2rem);
   position: relative;
   z-index: 1;
 }
 
 .profile-image {
-  width: 160px;
-  height: 160px;
+  width: clamp(120px, 20vw, 160px);
+  height: clamp(120px, 20vw, 160px);
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--true-blue);
+  border: clamp(2px, 0.5vw, 4px) solid var(--true-blue);
   box-shadow: 0 8px 24px rgba(4, 102, 200, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: var(--component-margin);
+  margin-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .profile-image:hover {
@@ -39,10 +39,10 @@
 }
 
 .about-section h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: var(--heading-margin-bottom);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
   position: relative;
 }
@@ -50,22 +50,22 @@
 .about-section h2::after {
   content: '';
   position: absolute;
-  bottom: calc(var(--space-2) * -1);
+  bottom: calc(clamp(0.5rem, 2vw, 1rem) * -1);
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
+  width: clamp(40px, 8vw, 60px);
+  height: clamp(2px, 0.5vw, 3px);
   background: var(--true-blue);
   border-radius: 2px;
 }
 
 .about-text {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   line-height: 1.8;
   color: var(--text-color);
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto var(--paragraph-margin-bottom);
+  max-width: min(95%, 600px);
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
 }
 
 .about-text b {
@@ -75,23 +75,25 @@
 
 .social-links {
   display: flex;
-  gap: var(--component-gap);
-  margin-top: var(--component-margin);
+  gap: clamp(1rem, 3vw, 1.5rem);
+  margin-top: clamp(1rem, 3vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: clamp(36px, 8vw, 48px);
+  height: clamp(36px, 8vw, 48px);
   border-radius: 50%;
   background: var(--card-bg);
   color: var(--text-color);
-  border: 2px solid var(--border-color);
+  border: clamp(1px, 0.3vw, 2px) solid var(--border-color);
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: var(--space-2);
+  padding: clamp(0.5rem, 2vw, 0.75rem);
 }
 
 .social-link:hover {
@@ -103,106 +105,13 @@
 }
 
 .social-link svg {
-  width: 24px;
-  height: 24px;
+  width: clamp(20px, 4vw, 24px);
+  height: clamp(20px, 4vw, 24px);
   transition: transform 0.3s ease;
 }
 
 .social-link:hover svg {
   transform: scale(1.1);
-}
-
-/* Tablet and smaller screens */
-@media (max-width: 768px) {
-  .about-section {
-    border-radius: 1.5rem;
-  }
-
-  .profile-image {
-    width: 140px;
-    height: 140px;
-  }
-
-  .about-section h2 {
-    font-size: 2.2rem;
-  }
-
-  .about-text {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-
-  .social-link {
-    width: 42px;
-    height: 42px;
-  }
-
-  .social-link svg {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-  .about-section {
-    border-radius: 1.25rem;
-  }
-
-  .profile-image {
-    width: 120px;
-    height: 120px;
-    border-width: 3px;
-  }
-
-  .about-section h2 {
-    font-size: 2rem;
-  }
-
-  .about-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .social-link {
-    width: 38px;
-    height: 38px;
-  }
-
-  .social-link svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-/* Small mobile devices */
-@media (max-width: 360px) {
-  .about-section {
-    border-radius: 1rem;
-  }
-
-  .profile-image {
-    width: 100px;
-    height: 100px;
-  }
-
-  .about-section h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-text {
-    font-size: 0.9rem;
-  }
-
-  .social-link {
-    width: 36px;
-    height: 36px;
-  }
-
-  .social-link svg {
-    width: 18px;
-    height: 18px;
-  }
 }
 
 /* Touch device optimizations */
@@ -220,7 +129,7 @@
   }
 
   .social-link:active {
-    transform: scale(0.95);
+    transform: translateY(-2px);
   }
 
   .social-link:hover svg {
@@ -229,5 +138,23 @@
 
   .social-link:active svg {
     transform: scale(0.95);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .profile-image,
+  .social-link,
+  .social-link svg {
+    transition: none;
+  }
+  
+  .profile-image:hover,
+  .social-link:hover {
+    transform: none;
+  }
+  
+  .social-link:hover svg {
+    transform: none;
   }
 } 

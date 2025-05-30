@@ -46,11 +46,10 @@ a:hover, button:hover {
   box-shadow: 0 4px 16px rgba(245,158,66,0.15);
   transform: translateY(-2px) scale(1.03);
   transition: all 0.2s;
-
 }
 
 .underline {
- background: linear-gradient(90deg, var(--primary), var(--highlight));
+  background: linear-gradient(90deg, var(--primary), var(--highlight));
   width: 200px;
   height: 8px;
   margin: 20px auto;
@@ -1365,5 +1364,28 @@ p, .about-text, .hero-subtitle {
     --card-bg: rgba(30, 30, 30, 0.8);
     --text-color: #ffffff;
     --border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .hero-content {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-cta {
+    justify-content: center;
   }
 }

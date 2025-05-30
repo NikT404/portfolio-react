@@ -1,0 +1,231 @@
+.experience-section {
+  padding: 4rem 0;
+  text-align: center;
+  background-color: var(--section-bg); /* Use theme background */
+  color: var(--text-color); /* Use theme text color */
+}
+
+.experience-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  color: var(--text-color); /* Use theme text color */
+}
+
+.experience-section .section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+.experience-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
+  border-radius: 2px;
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 900px; /* Limit timeline width */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%; /* Center the timeline line */
+  width: 3px; /* Thickness of the timeline line */
+  background-color: var(--border-color); /* Use theme border color */
+  transform: translateX(-50%);
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 3rem; /* Space between timeline items */
+  width: 50%; /* Items take up half the timeline width */
+}
+
+.experience-item:nth-child(odd) {
+  left: 0; /* Odd items on the left */
+  padding-right: 30px; /* Space for the dot and line */
+}
+
+.experience-item:nth-child(even) {
+  left: 50%; /* Even items on the right */
+  padding-left: 30px; /* Space for the dot and line */
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 15px; /* Vertically align with card header */
+  width: 20px; /* Size of the dot */
+  height: 20px;
+  background-color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
+  border-radius: 50%;
+  z-index: 1; /* Ensure dot is above the line */
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid var(--background-color); /* Border to match background */
+}
+
+.experience-item:nth-child(odd) .timeline-dot {
+  left: calc(100% - 10px); /* Position dot on the right for odd items */
+  transform: translateX(50%);
+}
+
+.experience-item:nth-child(even) .timeline-dot {
+  left: -10px; /* Position dot on the left for even items */
+  transform: translateX(-50%);
+}
+
+.experience-card {
+  background-color: var(--card-bg); /* Use theme card background */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 1.5rem;
+  text-align: left;
+  border: 1px solid var(--border-color); /* Subtle border */
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.experience-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color); /* Use theme text color */
+}
+
+.experience-years {
+  font-size: 0.9rem;
+  color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
+  font-weight: 500;
+}
+
+.experience-company {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.experience-description {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.experience-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--button-bg); /* Use theme button background */
+  color: var(--text-color); /* Use theme text color */
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color); /* Use theme border color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .experience-timeline::before {
+    left: 20px; /* Move timeline line to the left */
+    transform: none;
+  }
+
+  .experience-item {
+    width: 100%; /* Full width on smaller screens */
+    left: 0; /* Align all items to the left */
+    padding-left: 40px; /* Space for the dot and line */
+    padding-right: 0;
+  }
+
+  .experience-item:nth-child(odd) .timeline-dot,
+  .experience-item:nth-child(even) .timeline-dot {
+    left: 10px; /* Align dots to the left line */
+    transform: none;
+  }
+
+  .experience-card {
+    padding: 1rem;
+  }
+
+  .experience-title {
+    font-size: 1.2rem;
+  }
+
+  .experience-years {
+    font-size: 0.85rem;
+  }
+
+  .experience-company,
+  .experience-description {
+    font-size: 0.95rem;
+  }
+
+  .tech-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Dark mode adjustments (ensure theme variables are used) */
+.dark-mode .experience-section {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+}
+
+.dark-mode .experience-section h2,
+.dark-mode .experience-section .section-subtitle,
+.dark-mode .experience-title,
+.dark-mode .experience-company,
+.dark-mode .experience-description {
+  color: var(--text-color);
+}
+
+.dark-mode .experience-section h2::after {
+  background-color: var(--light-blue, #60a5fa); /* Lighter underline */
+}
+
+.dark-mode .experience-timeline::before,
+.dark-mode .tech-badge {
+    border-color: var(--border-color);
+}
+
+.dark-mode .timeline-dot {
+  background-color: #84AE92; /* Changed from var(--light-blue) to #84AE92 */
+  border-color: var(--background-color); /* Match dark background */
+}
+
+.dark-mode .experience-card {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05); /* Lighter shadow */
+  border-color: var(--border-color);
+}
+
+.dark-mode .experience-years {
+  color: #84AE92; /* Changed from var(--light-blue) to #84AE92 */
+} 
