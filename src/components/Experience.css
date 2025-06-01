@@ -1,17 +1,28 @@
 .experience-section {
-  padding: 4rem 0;
-  text-align: center;
-  background-color: var(--section-bg); /* Use theme background */
-  color: var(--text-color); /* Use theme text color */
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+  background: var(--section-bg);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .experience-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
   position: relative;
-  display: inline-block;
-  color: var(--text-color); /* Use theme text color */
+  z-index: 1;
+  background: linear-gradient(135deg, var(--text-color) 0%, var(--true-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .experience-section .section-subtitle {
@@ -24,185 +35,311 @@
 .experience-section h2::after {
   content: '';
   position: absolute;
-  bottom: -0.5rem;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
+  bottom: calc(clamp(0.5rem, 2vw, 1rem) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(40px, 8vw, 60px);
+  height: clamp(2px, 0.5vw, 3px);
+  background: var(--true-blue);
   border-radius: 2px;
 }
 
 .experience-timeline {
   position: relative;
-  max-width: 900px; /* Limit timeline width */
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.experience-timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%; /* Center the timeline line */
-  width: 3px; /* Thickness of the timeline line */
-  background-color: var(--border-color); /* Use theme border color */
-  transform: translateX(-50%);
-}
-
-.experience-item {
+  padding: 2rem 0;
   position: relative;
-  margin-bottom: 3rem; /* Space between timeline items */
-  width: 50%; /* Items take up half the timeline width */
+  z-index: 1;
 }
 
-.experience-item:nth-child(odd) {
-  left: 0; /* Odd items on the left */
-  padding-right: 30px; /* Space for the dot and line */
+.timeline-item {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+  will-change: transform;
 }
 
-.experience-item:nth-child(even) {
-  left: 50%; /* Even items on the right */
-  padding-left: 30px; /* Space for the dot and line */
+.timeline-item:last-child {
+  margin-bottom: 0;
 }
 
 .timeline-dot {
   position: absolute;
-  top: 15px; /* Vertically align with card header */
-  width: 20px; /* Size of the dot */
-  height: 20px;
-  background-color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
+  left: 0;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
-  z-index: 1; /* Ensure dot is above the line */
-  left: 50%;
-  transform: translateX(-50%);
-  border: 3px solid var(--background-color); /* Border to match background */
+  background: var(--true-blue);
+  border: 3px solid var(--card-bg);
+  box-shadow: 0 0 0 3px var(--true-blue);
+  z-index: 2;
 }
 
-.experience-item:nth-child(odd) .timeline-dot {
-  left: calc(100% - 10px); /* Position dot on the right for odd items */
-  transform: translateX(50%);
+.timeline-line {
+  position: absolute;
+  left: 0.75rem;
+  top: 1.5rem;
+  width: 2px;
+  height: calc(100% + 1.5rem);
+  background: var(--true-blue);
+  transform-origin: top;
+  z-index: 1;
 }
 
-.experience-item:nth-child(even) .timeline-dot {
-  left: -10px; /* Position dot on the left for even items */
-  transform: translateX(-50%);
+.timeline-item:last-child .timeline-line {
+  display: none;
 }
 
-.experience-card {
-  background-color: var(--card-bg); /* Use theme card background */
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  padding: 1.5rem;
-  text-align: left;
-  border: 1px solid var(--border-color); /* Subtle border */
+.timeline-content {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  will-change: transform;
 }
 
-.experience-header {
+.timeline-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.experience-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-color); /* Use theme text color */
-}
-
-.experience-years {
-  font-size: 0.9rem;
-  color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
-  font-weight: 500;
-}
-
-.experience-company {
-  font-size: 1rem;
+.timeline-title {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 700;
   color: var(--text-color);
-  opacity: 0.8;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
-.experience-description {
-  font-size: 1rem;
+.timeline-period {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--true-blue);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.timeline-company {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   color: var(--text-color);
   opacity: 0.9;
-  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.timeline-description {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
-.experience-technologies {
+.timeline-technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 .tech-badge {
-  display: inline-block;
   padding: 0.4rem 0.8rem;
-  background-color: var(--button-bg); /* Use theme button background */
-  color: var(--text-color); /* Use theme text color */
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  border: 1px solid var(--border-color); /* Use theme border color */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  will-change: transform, background-color, color;
 }
 
-/* Responsive adjustments */
+.certificate-container {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.certificate-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--card-bg);
+  border: 2px solid var(--true-blue);
+  border-radius: 0.75rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  will-change: transform, background-color, color;
+}
+
+.certificate-button:hover {
+  text-decoration: none;
+}
+
+.certificate-icon {
+  font-size: 1.25rem;
+}
+
+.certificate-text {
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.certificate-issuer {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-  .experience-timeline::before {
-    left: 20px; /* Move timeline line to the left */
-    transform: none;
+  .experience-section {
+    padding: 3rem 1.5rem;
   }
 
-  .experience-item {
-    width: 100%; /* Full width on smaller screens */
-    left: 0; /* Align all items to the left */
-    padding-left: 40px; /* Space for the dot and line */
-    padding-right: 0;
+  .experience-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
   }
 
-  .experience-item:nth-child(odd) .timeline-dot,
-  .experience-item:nth-child(even) .timeline-dot {
-    left: 10px; /* Align dots to the left line */
-    transform: none;
+  .timeline-item {
+    padding-left: 2.5rem;
   }
 
-  .experience-card {
-    padding: 1rem;
+  .timeline-header {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .experience-title {
-    font-size: 1.2rem;
+  .timeline-period {
+    font-size: 0.9rem;
   }
 
-  .experience-years {
+  .certificate-button {
+    padding: 0.6rem 1rem;
+  }
+
+  .certificate-text {
+    font-size: 0.9rem;
+  }
+
+  .certificate-issuer {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .experience-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-item {
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .timeline-line {
+    left: 0.625rem;
+  }
+
+  .timeline-content {
+    padding: 1.25rem;
+  }
+
+  .certificate-button {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .certificate-icon {
+    font-size: 1.1rem;
+  }
+
+  .certificate-text {
     font-size: 0.85rem;
   }
 
-  .experience-company,
-  .experience-description {
-    font-size: 0.95rem;
-  }
-
-  .tech-badge {
+  .certificate-issuer {
     font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
   }
 }
 
-/* Dark mode adjustments (ensure theme variables are used) */
+/* Touch device optimizations */
+@media (hover: none) {
+  .timeline-item,
+  .tech-badge {
+    transform: none !important;
+  }
+
+  .timeline-content:active {
+    transform: scale(0.98) !important;
+  }
+
+  .certificate-button {
+    transform: none !important;
+  }
+
+  .certificate-button:active {
+    transform: scale(0.98) !important;
+    background-color: var(--true-blue);
+    color: white;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item,
+  .timeline-content,
+  .timeline-dot,
+  .timeline-line,
+  .tech-badge {
+    transition: none;
+  }
+}
+
+/* Dark mode styles */
 .dark-mode .experience-section {
   background-color: var(--section-bg);
-  color: var(--text-color);
+}
+
+.dark-mode .timeline-content {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+.dark-mode .timeline-dot {
+  border-color: var(--card-bg);
+}
+
+.dark-mode .tech-badge {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
 }
 
 .dark-mode .experience-section h2,
 .dark-mode .experience-section .section-subtitle,
-.dark-mode .experience-title,
-.dark-mode .experience-company,
-.dark-mode .experience-description {
+.dark-mode .timeline-title,
+.dark-mode .timeline-company,
+.dark-mode .timeline-description {
   color: var(--text-color);
 }
 
@@ -210,22 +347,32 @@
   background-color: var(--light-blue, #60a5fa); /* Lighter underline */
 }
 
-.dark-mode .experience-timeline::before,
-.dark-mode .tech-badge {
-    border-color: var(--border-color);
-}
-
-.dark-mode .timeline-dot {
-  background-color: #84AE92; /* Changed from var(--light-blue) to #84AE92 */
-  border-color: var(--background-color); /* Match dark background */
-}
-
-.dark-mode .experience-card {
-  background-color: var(--card-bg);
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05); /* Lighter shadow */
-  border-color: var(--border-color);
+.dark-mode .timeline-line {
+  background: var(--light-blue, #60a5fa);
 }
 
 .dark-mode .experience-years {
   color: #84AE92; /* Changed from var(--light-blue) to #84AE92 */
+}
+
+.dark-mode .certificate-button {
+  background-color: var(--card-bg);
+  border-color: var(--true-blue);
+  color: var(--text-color);
+}
+
+.dark-mode .certificate-container {
+  border-top-color: var(--border-color);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .timeline-content {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .timeline-content:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 } 

@@ -217,218 +217,274 @@
 
 /* Base styles for the projects section */
 .projects-section {
-    padding: 4rem 0;
-    text-align: center;
-    background-color: #f8f8f8; /* Light background for the section */
-    color: #333; /* Default text color */
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
+  background: var(--section-bg);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Style for the section heading */
 .projects-section h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    position: relative;
-    display: inline-block; /* To center the underline */
-    color: #333 !important; /* Force dark color for light mode */
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(135deg, var(--text-color) 0%, var(--true-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Underline style for the heading (similar to skills) */
 .projects-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #84AE92; /* Changed from var(--true-blue) to #84AE92 */
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  bottom: calc(clamp(0.5rem, 2vw, 1rem) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(40px, 8vw, 60px);
+  height: clamp(2px, 0.5vw, 3px);
+  background: var(--true-blue);
+  border-radius: 2px;
 }
 
 /* Grid container for project cards */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 2rem; /* Space between grid items */
-    max-width: 1200px; /* Limit grid width */
-    margin: 0 auto;
-    padding: 0 1rem; /* Add some padding on the sides */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  width: min(95%, 1400px);
+  margin: 0 auto;
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+  position: relative;
+  z-index: 1;
 }
 
 /* Style for individual project cards */
 .project-card {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-    border-radius: 12px; /* Rounded corners */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    color: var(--text-color); /* Inherit text color from theme */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Style for project images */
+.project-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  overflow: hidden;
+}
+
 .project-image {
-    width: 100%;
-    height: 200px; /* Fixed height for images */
-    object-fit: cover; /* Crop image to cover the area */
-    border-bottom: 1px solid var(--border-color); /* Separator below image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
 }
 
-/* Container for project info (title, description, links) */
-.project-info {
-    padding: 1.5rem; /* Padding inside the card */
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Allow info section to take available space */
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  opacity: 0;
 }
 
-/* Project title style */
-.project-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem; /* Space below title */
-    color: var(--text-color); /* Inherit color from theme */
-}
-
-/* Project description style */
-.project-description {
-    font-size: 1rem;
-    color: var(--text-color); /* Inherit color from theme */
-    opacity: 0.9; /* Slightly less prominent */
-    line-height: 1.5;
-    margin-bottom: 1.5rem; /* Space below description */
-    flex-grow: 1; /* Allow description to take available space */
-}
-
-/* Container for project links */
-.project-links {
-    display: flex;
-    flex-wrap: wrap; /* Allow links to wrap on smaller screens */
-    gap: 0.75rem; /* Space between links */
-    margin-top: auto; /* Push links to the bottom */
-}
-
-/* Style for project links (buttons/badges) */
 .project-link {
-    display: inline-flex; /* Use inline-flex to align icon and text */
-    align-items: center;
-    padding: 0.5rem 1rem; /* Smaller padding */
-    border: 1px solid var(--true-blue, #2563eb); /* Border using theme color */
-    border-radius: 20px; /* Pill shape */
-    text-decoration: none;
-    font-size: 0.9rem; /* Smaller font size */
-    font-weight: 500;
-    transition: all 0.3s ease;
-    /* Using theme variables for colors */
-    color: var(--true-blue, #2563eb);
-    background-color: transparent; /* Transparent background */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  will-change: transform;
 }
 
-.project-link:hover {
-    background-color: var(--true-blue, #2563eb); /* Solid background on hover */
-    color: #fff; /* White text on hover */
-    border-color: var(--true-blue, #2563eb); /* Border color matches background */
+.project-link.github {
+  background: var(--true-blue);
+  color: white;
 }
 
-/* Specific styles for GitHub and Live links (optional, but good for clarity) */
-.project-link.github::before {
-    content: '깃'; /* Placeholder icon, replace with actual icon font or SVG */
-    margin-right: 4px;
+.project-link.live {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
 }
 
-.project-link.live::before {
-    content: '🔗'; /* Placeholder icon, replace with actual icon font or SVG */
-    margin-right: 4px;
+.project-info {
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.project-title {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.project-description {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  padding: 0.4rem 0.8rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  will-change: transform, background-color, color;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr; /* Stack cards on smaller screens */
-        gap: 1.5rem;
-    }
-    
-    .project-card {
-        padding: 1rem;
-    }
+  .projects-section {
+    padding: 3rem 1.5rem;
+  }
 
-    .project-image {
-        height: 180px;
-    }
+  .projects-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+  }
 
-    .project-info {
-        padding: 1rem;
-    }
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
 
-    .project-title {
-        font-size: 1.3rem;
-        margin-bottom: 0.5rem;
-    }
+  .project-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
 
-    .project-description {
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-    }
+/* Mobile phones */
+@media (max-width: 480px) {
+  .projects-section {
+    padding: 2.5rem 1rem;
+  }
 
-    .project-links {
-        gap: 0.5rem;
-    }
+  .projects-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 
-    .project-link {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
-    }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-link {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .project-card,
+  .project-image,
+  .tech-badge {
+    transform: none !important;
+  }
+
+  .project-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .project-overlay {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-image,
+  .project-overlay,
+  .project-link,
+  .tech-badge {
+    transition: none;
+  }
 }
 
 /* Dark mode styles */
 /* Ensure dark mode styles for project cards are compatible */
 .dark-mode .projects-section {
-    background-color: #1a1a1a; /* Dark background */
-    color: #eee; /* Light text */
+  background-color: #1a1a1a; /* Dark background */
+  color: #eee; /* Light text */
 }
 
 .dark-mode .projects-section h2 {
-    color: #eee !important; /* Force light title color in dark mode */
+  color: #eee !important; /* Force light title color in dark mode */
 }
 
 .dark-mode .projects-section h2::after {
-    background-color: var(--light-blue, #60a5fa); /* Lighter underline in dark mode */
+  background-color: var(--light-blue, #60a5fa); /* Lighter underline in dark mode */
 }
 
 .dark-mode .project-card {
-    background-color: rgba(30, 30, 30, 0.5); /* More transparent dark background */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.1); /* More transparent dark border */
+  background-color: rgba(30, 30, 30, 0.5); /* More transparent dark background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1); /* More transparent dark border */
 }
 
 .dark-mode .project-title,
 .dark-mode .project-description {
-    color: var(--text-color); /* Use theme variable */
+  color: var(--text-color); /* Use theme variable */
 }
 
 .dark-mode .project-image {
-     border-bottom-color: var(--border-color); /* Use theme variable */
+  border-bottom-color: var(--border-color); /* Use theme variable */
 }
 
 .dark-mode .project-link {
-    color: var(--light-blue, #60a5fa); /* Lighter color in dark mode */
-    border-color: var(--light-blue, #60a5fa); /* Lighter border in dark mode */
+  color: var(--light-blue, #60a5fa); /* Lighter color in dark mode */
+  border-color: var(--light-blue, #60a5fa); /* Lighter border in dark mode */
 }
 
 .dark-mode .project-link:hover {
-    background-color: var(--light-blue, #60a5fa); /* Lighter background on hover */
-    color: var(--card-bg); /* Dark text on hover */
+  background-color: var(--light-blue, #60a5fa); /* Lighter background on hover */
+  color: var(--card-bg); /* Dark text on hover */
 }
 
 /* State when element is visible (if you still use scroll animations) */
@@ -436,3 +492,15 @@
     opacity: 1; 
     transform: translateY(0);
 } */
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .project-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .project-card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}

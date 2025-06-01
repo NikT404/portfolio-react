@@ -3,12 +3,14 @@
   --text-color: #333333;
   --button-bg: #f0f0f0;
   --button-hover: #e0e0e0;
-  --app-background: #FAFFCA;
+  --app-background: #84a98c;
   --card-bg: #ffffff;
   --border-color: #e0e0e0;
   --nav-bg: rgba(255, 255, 255, 0.8);
   --nav-text: #333333;
   --section-bg: #ffffff;
+  --grid-line-color: rgba(0, 0, 0, 0.1);
+  --grid-dot-color: rgba(0, 0, 0, 0.2);
 }
 
 :root[data-theme="dark"] {

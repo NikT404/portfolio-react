@@ -1,5 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import './projects.css';
+import './section-background.css';
+import SectionBackground from './SectionBackground';
 
 const projects = [
   {
@@ -7,63 +10,210 @@ const projects = [
     description: "A brief description of Project One.",
     image: "/path/to/project1.jpg",
     link: "#",
-    github: "#"
+    github: "#",
+    technologies: ["React", "Node.js", "MongoDB"]
   },
   {
     title: "Project Two",
     description: "A brief description of Project Two.",
     image: "/path/to/project2.jpg",
     link: "#",
-    github: "#"
+    github: "#",
+    technologies: ["Vue.js", "Express", "PostgreSQL"]
   },
   {
     title: "Project Three",
     description: "A brief description of Project Three.",
     image: "/path/to/project3.jpg",
     link: "#",
-    github: "#"
+    github: "#",
+    technologies: ["React", "Firebase", "TailwindCSS"]
   },
   {
     title: "Project Four",
     description: "A brief description of Project Four.",
     image: "/path/to/project4.jpg",
     link: "#",
-    github: "#"
+    github: "#",
+    technologies: ["Next.js", "TypeScript", "Prisma"]
   }
   // Add more projects here as needed
 ];
 
+// Animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const projectCardVariants = {
+  hidden: { 
+    opacity: 0,
+    y: 50,
+    scale: 0.9
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 15,
+    },
+  },
+  hover: {
+    y: -10,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10,
+    },
+  },
+};
+
+const imageVariants = {
+  hover: {
+    scale: 1.05,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 15,
+    },
+  },
+};
+
+const techBadgeVariants = {
+  hover: {
+    scale: 1.1,
+    backgroundColor: "var(--true-blue)",
+    color: "white",
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 10,
+    },
+  },
+};
+
 const Projects = () => {
-  // Divide projects into two groups if needed, or just map all into one grid container
-  // For simplicity, let's just map all into one grid for now, and we can adjust if you need two distinct blocks
   return (
-    <section id="projects" className="projects-section">
-      <h2>My Projects</h2>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <img src={project.image} alt={`${project.title} screenshot`} className="project-image" />
-            <div className="project-info">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <div className="project-links">
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link github">
+    <section id="projects" className="projects-section section-with-background">
+      <SectionBackground 
+        colors={[
+          { color: 'rgba(97, 218, 251, 0.15)', position: '20% 20%' },  // React blue
+          { color: 'rgba(247, 223, 30, 0.15)', position: '80% 80%' },  // JavaScript yellow
+          { color: 'rgba(6, 182, 212, 0.1)', position: '50% 50%' }     // Tailwind cyan
+        ]}
+      />
+      <div className="section-content">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          My Projects
+        </motion.h2>
+        <motion.div 
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              className="project-card"
+              variants={projectCardVariants}
+              whileHover="hover"
+            >
+              <motion.div 
+                className="project-image-container"
+                variants={imageVariants}
+              >
+                <img 
+                  src={project.image} 
+                  alt={`${project.title} screenshot`} 
+                  className="project-image" 
+                />
+                <motion.div 
+                  className="project-overlay"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link github"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     GitHub
-                  </a>
-                )}
-                {project.link && (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link live">
+                  </motion.a>
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link live"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
                     Live Demo
-                  </a>
-                )}
+                  </motion.a>
+                </motion.div>
+              </motion.div>
+              <div className="project-info">
+                <motion.h3 
+                  className="project-title"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {project.title}
+                </motion.h3>
+                <motion.p 
+                  className="project-description"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {project.description}
+                </motion.p>
+                <motion.div 
+                  className="project-technologies"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                >
+                  {project.technologies.map((tech, techIndex) => (
+                    <motion.span
+                      key={techIndex}
+                      className="tech-badge"
+                      variants={techBadgeVariants}
+                      whileHover="hover"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </motion.div>
               </div>
-            </div>
-          </div>
-        ))}
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-      {/* If you need a second grid block, you can add another div here */}
-      {/* <div className="projects-grid">{...more projects map...}</div> */}
     </section>
   );
 };

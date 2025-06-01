@@ -1,0 +1,29 @@
+.section-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Add this to any section that uses the background */
+.section-with-background {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  /* This will allow the section height to be determined by content and padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure content stays above the background */
+.section-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+} 

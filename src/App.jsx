@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 import AboutMe from './components/AboutMe';
 import Darkmode from './components/Darkmode';
 import Experience from './components/Experience';
+import Contact from './components/Contact';
 import "./styles/spacing.css";
 import "./styles/common.css";
 import "./App.css";
@@ -22,6 +23,7 @@ function App() {
         <Projects />
         <Skills />
         <Experience />
+        <Contact />
         <Footer />
       </main>
     </>
