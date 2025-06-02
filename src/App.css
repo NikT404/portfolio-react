@@ -13,6 +13,18 @@
   --h3-size: clamp(1.2rem, 3vw, 2rem);
   --body-size: clamp(0.9rem, 2vw, 1.1rem);
   --small-size: clamp(0.8rem, 1.5vw, 1rem);
+
+  /* Border Radius System */
+  --radius-sm: 4px;      /* Small elements like buttons, badges */
+  --radius-md: 8px;      /* Cards, input fields */
+  --radius-lg: 16px;     /* Section containers, larger cards */
+  --radius-xl: 24px;     /* Main sections, hero areas */
+  --radius-2xl: 32px;    /* Large containers, full sections */
+  --radius-full: 9999px; /* Circular elements, pills */
+  
+  /* Responsive border radius */
+  --radius-responsive: clamp(16px, 2vw, 24px); /* For sections that need responsive radius */
+  --radius-card: clamp(8px, 1vw, 16px);        /* For cards that need responsive radius */
 }
 
 html {

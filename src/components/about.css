@@ -24,14 +24,14 @@
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: var(--radius-xl);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .profile-image {
   width: clamp(120px, 20vw, 160px);
   height: clamp(120px, 20vw, 160px);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   object-fit: cover;
   border: clamp(2px, 0.5vw, 4px) solid var(--true-blue);
   box-shadow: 0 8px 24px rgba(4, 102, 200, 0.2);
@@ -63,7 +63,7 @@
   width: clamp(40px, 8vw, 60px);
   height: clamp(2px, 0.5vw, 3px);
   background: var(--true-blue);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
 }
 
 .about-text {
@@ -95,7 +95,7 @@
   background: var(--true-blue);
   opacity: 0.2;
   z-index: -1;
-  border-radius: 0.1em;
+  border-radius: var(--radius-sm);
 }
 
 .social-links {
@@ -113,7 +113,7 @@
   justify-content: center;
   width: clamp(36px, 8vw, 48px);
   height: clamp(36px, 8vw, 48px);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: var(--card-bg);
   color: var(--text-color);
   border: clamp(1px, 0.3vw, 2px) solid var(--border-color);
@@ -203,7 +203,7 @@
   background: var(--card-bg);
   color: var(--true-blue);
   border: 2px solid var(--true-blue);
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   font-weight: 600;
   font-size: clamp(0.95rem, 2vw, 1.1rem);
   text-decoration: none;

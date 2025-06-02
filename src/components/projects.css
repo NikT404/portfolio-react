@@ -13,7 +13,7 @@
   justify-content: center;
   background: var(--true-blue);
   color: white;
-  border-radius: clamp(1rem, 3vw, 2rem);
+  border-radius: var(--radius-responsive);
   margin: clamp(2rem, 5vw, 4rem) auto;
   width: min(95%, 1200px);
   position: relative;
@@ -69,7 +69,7 @@
 
 .project-box {
   border: clamp(2px, 0.5vw, 4px) solid white;
-  border-radius: clamp(1rem, 2vw, 1.5rem);
+  border-radius: var(--radius-xl);
   padding: clamp(1.5rem, 3vw, 2rem);
   background: rgba(255, 255, 255, 0.95); /* Original background with transparency */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -132,7 +132,7 @@
   font-weight: 500;
   padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
   border: 2px solid var(--true-blue);
-  border-radius: clamp(0.75rem, 2vw, 1rem);
+  border-radius: var(--radius-md);
   transition: all 0.3s ease;
   background: white;
   width: fit-content;
@@ -274,7 +274,7 @@
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -320,7 +320,7 @@
 
 .project-link {
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-md);
   font-weight: 600;
   text-decoration: none;
   will-change: transform;
