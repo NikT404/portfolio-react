@@ -155,7 +155,7 @@ export default function Pop() {
                 technologies
               </motion.p>
               <motion.div
-                className="hero-cta stack-mobile gap-responsive"
+                className="project button "
                 variants={textVariants}
               >
                 <motion.a

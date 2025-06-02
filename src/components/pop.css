@@ -82,7 +82,7 @@
 
 .hero-cta {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -102,6 +102,7 @@
   background: var(--true-blue);
   color: white;
   border: none;
+  margin-right: 1rem;
 }
 
 .button.secondary {
