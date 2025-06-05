@@ -221,15 +221,36 @@
   background: var(--section-bg);
   position: relative;
   overflow: hidden;
-  width: 100%;
-  min-height: 100vh;
+  width: calc(100% - 40px);
+  max-width: 1000px;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-out;
+  border: 1px solid var(--border-color);
 }
 
-/* Style for the section heading */
+.projects-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(97, 218, 251, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(247, 223, 30, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  transform: scale(1);
+  transform-origin: center center;
+  opacity: 1;
+}
+
 .projects-section h2 {
   text-align: center;
   font-size: clamp(2rem, 5vw, 3rem);
@@ -244,7 +265,6 @@
   background-clip: text;
 }
 
-/* Underline style for the heading (similar to skills) */
 .projects-section h2::after {
   content: '';
   position: absolute;
@@ -260,9 +280,9 @@
 /* Grid container for project cards */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  width: min(95%, 1400px);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  width: min(95%, 1000px);
   margin: 0 auto;
   padding: 0 clamp(0.5rem, 2vw, 1rem);
   position: relative;
@@ -375,7 +395,9 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .projects-section {
-    padding: 3rem 1.5rem;
+    width: calc(100% - 20px);
+    padding: 30px 15px;
+    margin: 30px auto;
   }
 
   .projects-section h2 {
@@ -384,8 +406,9 @@
   }
 
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
   }
 
   .project-overlay {
@@ -397,7 +420,9 @@
 /* Mobile phones */
 @media (max-width: 480px) {
   .projects-section {
-    padding: 2.5rem 1rem;
+    width: calc(100% - 20px);
+    padding: 25px 10px;
+    margin: 20px auto;
   }
 
   .projects-section h2 {
@@ -406,8 +431,9 @@
   }
 
   .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 0 5px;
   }
 
   .project-link {
@@ -502,5 +528,13 @@
 
   .project-card:hover {
     border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Desktop styles (1024px and up) */
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
   }
 }
