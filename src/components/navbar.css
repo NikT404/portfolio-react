@@ -22,7 +22,7 @@
 
 .navbar.scrolled {
   height: 52px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--nav-scrolled-bg);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 

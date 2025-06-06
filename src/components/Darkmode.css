@@ -11,6 +11,15 @@
   --section-bg: #ffffff;
   --grid-line-color: rgba(0, 0, 0, 0.1);
   --grid-dot-color: rgba(0, 0, 0, 0.2);
+  --nav-link-bg: rgba(255, 255, 255, 0.1);
+  --nav-link-border: rgba(255, 255, 255, 0.12);
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.15);
+  --nav-link-hover-border: rgba(255, 255, 255, 0.2);
+  --shape-circle-bg: rgba(167, 139, 250, 0.2);
+  --shape-square-bg: rgba(244, 114, 182, 0.2);
+  --shape-triangle-bg: rgba(251, 191, 36, 0.2);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.95); /* Scrolled navbar background in light mode */
 }
 
 :root[data-theme="dark"] {
@@ -24,6 +33,15 @@
   --nav-bg: rgba(18, 18, 18, 0.8);
   --nav-text: #ffffff;
   --section-bg: #1a1a1a;
+  --nav-link-bg: rgba(255, 255, 255, 0.15);
+  --nav-link-border: rgba(255, 255, 255, 0.2);
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.25);
+  --nav-link-hover-border: rgba(255, 255, 255, 0.3);
+  --shape-circle-bg: rgba(167, 139, 250, 0.3);
+  --shape-square-bg: rgba(244, 114, 182, 0.3);
+  --shape-triangle-bg: rgba(251, 191, 36, 0.3);
+  --box-shadow-color: rgba(0, 0, 0, 0.3);
+  --nav-scrolled-bg: rgba(18, 18, 18, 0.95); /* Scrolled navbar background in dark mode */
 }
 
 /* Apply theme colors to all elements */
